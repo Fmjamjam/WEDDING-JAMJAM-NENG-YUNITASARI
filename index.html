@@ -329,15 +329,38 @@
         <i class="fab fa-whatsapp"></i>
         &nbsp;&nbsp;Saya Datang
       </a>
-      <h2>Ucapan & Doa</h2>
-<script>talkyardServerUrl='https://site-1k2a9gl9g2.talkyard.net';</script>
-<script async defer src="https://c1.ty-cdn.net/-/talkyard-comments.min.js"></script>
-<!-- You can specify a per page discussion id on the next line, if your URLs might change. -->
-<div class="talkyard-comments" data-discussion-id="" style="margin-top: 45px;">
-<noscript>Please enable Javascript to view comments.</noscript>
-<p style="margin-top: 25px; opacity: 0.9; font-size: 96%">Comments powered by
-<a href="https://www.talkyard.io">Talkyard</a>.</p>
-</div>
+      <h3 align="center">Ucapan & Doa</h3>
+<script>const database = firebase.database();
+
+  document.getElementById("guestbook-form").addEventListener("submit", function(event) {
+      event.preventDefault(); // Mencegah reload halaman
+      const name = document.getElementById("name").value;
+      const message = document.getElementById("message").value;
+  
+      database.ref("guestbook").push({
+          name: name,
+          message: message,
+          timestamp: new Date().toISOString()
+      }).then(() => {
+          document.getElementById("success-message").style.display = "block";
+          document.getElementById("guestbook-form").reset();
+      }).catch((error) => {
+          console.error("Error: ", error);
+      });
+  });
+  </script>
+      <form id="guestbook-form">
+        <label for="name">Nama:</label>
+        <input type="text" id="name" required />
+        
+        <label for="message">Ucapan dan Doa:</label>
+        <textarea id="message" required></textarea>
+        
+        <button type="submit">Kirim</button>
+      </form>
+      
+      <div id="success-message" style="display: none;">Terima kasih atas ucapannya!</div>
+
 
     
   </section>
