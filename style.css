@@ -522,3 +522,79 @@ footer li {
   cursor: pointer;
   transition: 0.3s;
 }
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.container {
+  width: 90%;
+  max-width: 600px;
+  margin: 20px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input, textarea, button {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+textarea {
+  resize: none;
+  height: 80px;
+}
+
+button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.comment-section {
+  margin-top: 20px;
+}
+
+.comment {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin-bottom: 10px;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.comment .name {
+  font-weight: bold;
+  color: #555;
+}
+
+.comment .text {
+  margin-top: 5px;
+  color: #333;
+}
