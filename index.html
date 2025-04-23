@@ -288,7 +288,7 @@
       </div>
     </div>
   </section>
-
+<!--
   <section id="rsvp" class="rsvp">
     <div class="container">
       <div class="row justify-content-center">
@@ -300,7 +300,7 @@
 
       <form class="row row-cols-md-auto g-3 align-items-center justify-content-center" method="POST"
         action="https://script.google.com/macros/s/AKfycbyddFbEJRqwEeA6OmZAuNf0jw_B30ZUOS5qSDwlAKV_nurcW7H6osJx2ZWnIeTmPm_35g/exec"
-        id="my-form">
+        id="my-form"> -->
         
         <div class="col-12" style="margin-top: 50px;">
           <button class="btn btn-primary">SAYA HADIR</button>
@@ -313,7 +313,7 @@
        <h3>UCAPAN DAN DO'A</h3>
 
     <!-- Form Input -->
-    <form id="ucapanForm">
+    <form id="ucapanForm" action="" method="POST">
       <input type="text" id="nama" placeholder="Masukkan Nama" required>
       <textarea id="ucapan" placeholder="Masukkan Ucapan atau Do'a" required></textarea>
       <button type="button" onclick="submitUcapan()">Kirim</button>
@@ -324,13 +324,7 @@
       <!-- Ucapan akan muncul di sini -->
     </div>
   </div>
-<form action="" method="POST">
-  <label>Nama :
-    <input type="text" name="nama" required /> </label>
-  <label>Ucapan dan Do'a : <br/>
-    <textarea name="ucapan" required /> </textarea></label>
-      <input type="sumbit" name="kirim" value="kirim"/>
-</form>
+
   
   <section id="gifts" class="gifts">
     <div class="container">
@@ -510,3 +504,26 @@
 </body>
 
 </html>
+
+<?php
+    if(isset($_POST["kirim"])) {
+      print "<h3> Terimakasih Ucapannya</>h3";
+      $nama = $_POST["nama"];
+      $ucapan = $_POST["ucapan"];
+
+      $Old = fopen("ucapan.txt", "r+t");
+      $Old_ucapan = fread($Old, 1024);
+
+      $Write = fopen("ucapan.txt", "w+");
+      $String = 
+          "<div class='ucapan'><span>".$nama."</span><br />
+          <span>".date("y/m/d")." | " ".date("h:i A")."</span><br />
+          <span>".$ucapan."</span></div>\n".$Old_ucapan;
+      fwrite($Write, $String);
+      fclose($Write);
+      fclose($Old);
+
+    $Read = fopen("ucapan.txt", "r+t");
+    echo "<h3> Ucapan dan Do'a :</h3><hr>".fread($Read, 1024);
+    fclose($Read);
+?>
