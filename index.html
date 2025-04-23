@@ -350,21 +350,24 @@
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js"></script>
   <script>
+    <script type="module">
+    import { initializeApp } from "firebase/app";
+    import { getAnalytics } from "firebase/analytics";
     // Firebase Config
     const firebaseConfig = {
-      apiKey: "YOUR_API_KEY",
-      authDomain: "YOUR_AUTH_DOMAIN",
-      databaseURL: "YOUR_DATABASE_URL",
-      projectId: "YOUR_PROJECT_ID",
-      storageBucket: "YOUR_STORAGE_BUCKET",
-      messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-      appId: "YOUR_APP_ID"
+       apiKey: "AIzaSyC55RsYKp4fmX8dxHLBtOXtP_RJVGsnL_A",
+      authDomain: "do-a-dan-ucapan.firebaseapp.com",
+      databaseURL: "https://do-a-dan-ucapan-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "do-a-dan-ucapan",
+  storageBucket: "do-a-dan-ucapan.firebasestorage.app",
+  messagingSenderId: "821839833745",
+  appId: "1:821839833745:web:5c52bf2d9c2b149ebded30",
+  measurementId: "G-ZMTRGJ602B"
     };
 
     // Initialize Firebase
     const app = firebase.initializeApp(firebaseConfig);
     const database = firebase.database(app);
-
     // Fungsi untuk menyimpan ucapan
     function submitUcapan() {
       const nama = document.getElementById('nama').value;
