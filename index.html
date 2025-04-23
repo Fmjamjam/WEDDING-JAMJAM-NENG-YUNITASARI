@@ -21,9 +21,6 @@
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
-  <link rel="stylesheet" href="style.css">
-  <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-database-compat.js"></script>
 </head>
 
 <body>
@@ -356,13 +353,13 @@
     // Firebase Config
     const firebaseConfig = {
        apiKey: "AIzaSyC55RsYKp4fmX8dxHLBtOXtP_RJVGsnL_A",
-      authDomain: "do-a-dan-ucapan.firebaseapp.com",
-      databaseURL: "https://do-a-dan-ucapan-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "do-a-dan-ucapan",
-  storageBucket: "do-a-dan-ucapan.firebasestorage.app",
-  messagingSenderId: "821839833745",
-  appId: "1:821839833745:web:5c52bf2d9c2b149ebded30",
-  measurementId: "G-ZMTRGJ602B"
+       authDomain: "do-a-dan-ucapan.firebaseapp.com",
+       databaseURL: "https://do-a-dan-ucapan-default-rtdb.asia-southeast1.firebasedatabase.app",
+       projectId: "do-a-dan-ucapan",
+       storageBucket: "do-a-dan-ucapan.firebasestorage.app",
+       messagingSenderId: "821839833745",
+       appId: "1:821839833745:web:5c52bf2d9c2b149ebded30",
+       measurementId: "G-ZMTRGJ602B"
     };
 
     // Initialize Firebase
@@ -370,8 +367,8 @@
     const database = firebase.database(app);
     // Fungsi untuk menyimpan ucapan
     function submitUcapan() {
-  const nama = document.getElementById('nama').value;
-  const ucapan = document.getElementById('ucapan').value;
+    const nama = document.getElementById('nama').value;
+    const ucapan = document.getElementById('ucapan').value;
 
   if (!nama || !ucapan) {
     alert('Harap isi nama dan ucapan!');
@@ -402,11 +399,11 @@
 }
 
 // Panggil fungsi saat halaman dimuat
-document.addEventListener('DOMContentLoaded', loadUcapan);
+    document.addEventListener('DOMContentLoaded', loadUcapan);
 
   </script>
   </section>
-
+  
   <section id="gifts" class="gifts">
     <div class="container">
       <div class="row justify-content-center">
