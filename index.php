@@ -300,27 +300,28 @@
 
       <form class="row row-cols-md-auto g-3 align-items-center justify-content-center" method="POST"
         action="https://script.google.com/macros/s/AKfycbyddFbEJRqwEeA6OmZAuNf0jw_B30ZUOS5qSDwlAKV_nurcW7H6osJx2ZWnIeTmPm_35g/exec"
-        id="my-form"> -->
+        id="my-form"> 
         
         <div class="col-12" style="margin-top: 50px;">
           <button class="btn btn-primary">SAYA HADIR</button>
         </div>
-      </form>
+      </form>-->
+    <div class="col-12" style="margin-top: 50px;">
       <a href="https://api.whatsapp.com/send?phone=6287778968095&text=Halo%20Jamjam%20dan%20Neng%20Yunita,%20saya%20akan%20datang%20di%20acara%20pernikahan%20kalian!&source=&data=" class="button btn-whatsapp" target="_blank" data-aos="zoom-in">
         <i class="fab fa-whatsapp"></i>
         &nbsp;&nbsp;Saya Datang
       </a>
        <h3>UCAPAN DAN DO'A</h3>
-
+    </div>
     <!-- Form Input -->
-    <form id="ucapanForm" action="" method="POST">
+    <form id="ucapan" action="" method="POST">
       <input type="text" id="nama" placeholder="Masukkan Nama" required>
-      <textarea id="ucapan" placeholder="Masukkan Ucapan atau Do'a" required></textarea>
-      <button type="button" onclick="submitUcapan()">Kirim</button>
+      <textarea id="ucapan" placeholder="Masukkan Ucapan dan Do'a" required></textarea>
+      <button type="button" onclick="kirim()">Kirim</button>
     </form>
 
     <!-- Daftar Ucapan -->
-    <div id="daftarUcapan" class="comment-section">
+    <div id="ucapan" class="comment-section">
       <!-- Ucapan akan muncul di sini -->
     </div>
   </div>
@@ -524,6 +525,6 @@
       fclose($Old);
 
     $Read = fopen("ucapan.txt", "r+t");
-    echo "<h3> Ucapan dan Do'a :</h3><hr>".fread($Read, 1024);
+    echo "<h3> Ucapan dan Doa :</h3><hr>".fread($Read, 1024);
     fclose($Read);
 ?>
