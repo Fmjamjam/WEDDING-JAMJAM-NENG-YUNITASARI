@@ -26,6 +26,20 @@
 </head>
 
 <body>
+   <script type="module">
+    import { initializeApp } from "firebase/app";
+    import { getAnalytics } from "firebase/analytics";
+    // Firebase Config
+    const firebaseConfig = {
+       apiKey: "AIzaSyC55RsYKp4fmX8dxHLBtOXtP_RJVGsnL_A",
+       authDomain: "do-a-dan-ucapan.firebaseapp.com",
+       databaseURL: "https://do-a-dan-ucapan-default-rtdb.asia-southeast1.firebasedatabase.app",
+       projectId: "do-a-dan-ucapan",
+       storageBucket: "do-a-dan-ucapan.firebasestorage.app",
+       messagingSenderId: "821839833745",
+       appId: "1:821839833745:web:5c52bf2d9c2b149ebded30",
+       measurementId: "G-ZMTRGJ602B"
+    };
 
   <section id="hero"
     class="hero w-100 h-100 p-3 mx-auto text-center d-flex justify-content-center align-items-center text-white">
@@ -349,20 +363,7 @@
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js"></script>
   <script>
-    <script type="module">
-    import { initializeApp } from "firebase/app";
-    import { getAnalytics } from "firebase/analytics";
-    // Firebase Config
-    const firebaseConfig = {
-       apiKey: "AIzaSyC55RsYKp4fmX8dxHLBtOXtP_RJVGsnL_A",
-       authDomain: "do-a-dan-ucapan.firebaseapp.com",
-       databaseURL: "https://do-a-dan-ucapan-default-rtdb.asia-southeast1.firebasedatabase.app",
-       projectId: "do-a-dan-ucapan",
-       storageBucket: "do-a-dan-ucapan.firebasestorage.app",
-       messagingSenderId: "821839833745",
-       appId: "1:821839833745:web:5c52bf2d9c2b149ebded30",
-       measurementId: "G-ZMTRGJ602B"
-    };
+   
 
     // Initialize Firebase
     const app = firebase.initializeApp(firebaseConfig);
