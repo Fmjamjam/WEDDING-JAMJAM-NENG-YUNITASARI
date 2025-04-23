@@ -564,7 +564,7 @@ button:hover {
   margin-top: 20px;
 }
 
-.comment {
+.ucapan {
   display: flex;
   flex-direction: column;
   padding: 10px;
@@ -574,12 +574,12 @@ button:hover {
   border-radius: 8px;
 }
 
-.comment .name {
+.ucapan .nama {
   font-weight: bold;
   color: #555;
 }
 
-.comment .text {
+.ucapan .text {
   margin-top: 5px;
   color: #333;
 }
