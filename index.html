@@ -403,6 +403,41 @@
 // Panggil fungsi saat halaman dimuat
     document.addEventListener('DOMContentLoaded', loadUcapan);
 
+console.log("Konfigurasi Firebase: ", firebaseConfig);
+
+const app = firebase.initializeApp(firebaseConfig);
+console.log("Firebase App Initialized: ", app);
+
+const database = firebase.database(app);
+console.log("Database Connected: ", database);
+
+    function submitUcapan() {
+  const nama = document.getElementById('nama').value;
+  const ucapan = document.getElementById('ucapan').value;
+
+  console.log("Nama: ", nama);
+  console.log("Ucapan: ", ucapan);
+
+  if (!nama || !ucapan) {
+    alert('Harap isi nama dan ucapan!');
+    return;
+  }
+
+  const newUcapanRef = firebase.database().ref('ucapan').push();
+  newUcapanRef.set({
+    nama: nama,
+    ucapan: ucapan
+  }).then(() => {
+    console.log("Ucapan berhasil disimpan!");
+  }).catch((error) => {
+    console.error("Error menyimpan ucapan: ", error);
+  });
+
+  document.getElementById('nama').value = '';
+  document.getElementById('ucapan').value = '';
+}
+    const newUcapanRef = firebase.database().ref('ucapan').push();
+    
   </script>
   </section>
   
