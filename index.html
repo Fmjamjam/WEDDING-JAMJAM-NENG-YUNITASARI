@@ -346,43 +346,61 @@
     </div>
   </div>
 
+  <!-- Tambahkan Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js"></script>
   <script>
-    // JavaScript langsung di sini
+    // Firebase Config
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_AUTH_DOMAIN",
+      databaseURL: "YOUR_DATABASE_URL",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_STORAGE_BUCKET",
+      messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
 
-   // Fungsi untuk menyimpan ucapan
-function submitUcapan() {
-  const ucapan = document.getElementById('ucapan').value;
+    // Initialize Firebase
+    const app = firebase.initializeApp(firebaseConfig);
+    const database = firebase.database(app);
 
-  // Ambil data lama dari localStorage
-  let ucapanList = JSON.parse(localStorage.getItem('ucapanList')) || [];
-  ucapanList.push(ucapan);
+    // Fungsi untuk menyimpan ucapan
+    function submitUcapan() {
+      const nama = document.getElementById('nama').value;
+      const ucapan = document.getElementById('ucapan').value;
 
-  // Simpan data ke localStorage
-  localStorage.setItem('ucapanList', JSON.stringify(ucapanList));
+      if (!nama || !ucapan) {
+        alert('Harap isi nama dan ucapan!');
+        return;
+      }
 
-  // Tampilkan ucapan di halaman
-  const daftarUcapan = document.getElementById('daftarUcapan');
-  const ucapanElement = document.createElement('p');
-  ucapanElement.textContent = ucapan;
-  daftarUcapan.appendChild(ucapanElement);
+      // Kirim data ke Firebase
+      const newUcapanRef = firebase.database().ref('ucapan').push();
+      newUcapanRef.set({
+        nama: nama,
+        ucapan: ucapan
+      });
 
-  // Kosongkan textarea setelah dikirim
-  document.getElementById('ucapan').value = '';
-}
+      // Kosongkan input setelah dikirim
+      document.getElementById('nama').value = '';
+      document.getElementById('ucapan').value = '';
+    }
 
-// Fungsi untuk memuat data ucapan saat halaman dibuka
-function loadUcapan() {
-  const ucapanList = JSON.parse(localStorage.getItem('ucapanList')) || [];
-  const daftarUcapan = document.getElementById('daftarUcapan');
-  ucapanList.forEach(ucapan => {
-    const ucapanElement = document.createElement('p');
-    ucapanElement.textContent = ucapan;
-    daftarUcapan.appendChild(ucapanElement);
-  });
-}
+    // Fungsi untuk memuat ucapan dari Firebase
+    function loadUcapan() {
+      const daftarUcapan = document.getElementById('daftarUcapan');
+      firebase.database().ref('ucapan').on('child_added', snapshot => {
+        const data = snapshot.val();
+        const ucapanElement = document.createElement('div');
+        ucapanElement.className = 'comment';
+        ucapanElement.innerHTML = `<span class="name">${data.nama}</span><span class="text">${data.ucapan}</span>`;
+        daftarUcapan.appendChild(ucapanElement);
+      });
+    }
 
-// Panggil fungsi saat halaman dimuat
-document.addEventListener('DOMContentLoaded', loadUcapan);
+    // Panggil fungsi saat halaman dimuat
+    document.addEventListener('DOMContentLoaded', loadUcapan);
   </script>
   </section>
 
