@@ -349,50 +349,42 @@
   <script>
     // JavaScript langsung di sini
 
-    // Fungsi untuk menyimpan ucapan
-    function submitUcapan() {
-      const nama = document.getElementById('nama').value;
-      const ucapan = document.getElementById('ucapan').value;
+   // Fungsi untuk menyimpan ucapan
+function submitUcapan() {
+  const ucapan = document.getElementById('ucapan').value;
 
-      if (!nama || !ucapan) {
-        alert('Harap isi nama dan ucapan!');
-        return;
-      }
+  // Ambil data lama dari localStorage
+  let ucapanList = JSON.parse(localStorage.getItem('ucapanList')) || [];
+  ucapanList.push(ucapan);
 
-      // Ambil data lama dari localStorage
-      let ucapanList = JSON.parse(localStorage.getItem('ucapanList')) || [];
-      ucapanList.push({ nama, ucapan });
+  // Simpan data ke localStorage
+  localStorage.setItem('ucapanList', JSON.stringify(ucapanList));
 
-      // Simpan data ke localStorage
-      localStorage.setItem('ucapanList', JSON.stringify(ucapanList));
+  // Tampilkan ucapan di halaman
+  const daftarUcapan = document.getElementById('daftarUcapan');
+  const ucapanElement = document.createElement('p');
+  ucapanElement.textContent = ucapan;
+  daftarUcapan.appendChild(ucapanElement);
 
-      // Tampilkan ucapan di halaman
-      const daftarUcapan = document.getElementById('daftarUcapan');
-      const ucapanElement = document.createElement('div');
-      ucapanElement.className = 'comment';
-      ucapanElement.innerHTML = `<span class="name">${nama}</span><span class="text">${ucapan}</span>`;
-      daftarUcapan.appendChild(ucapanElement);
+  // Kosongkan textarea setelah dikirim
+  document.getElementById('ucapan').value = '';
+}
 
-      // Kosongkan input setelah dikirim
-      document.getElementById('nama').value = '';
-      document.getElementById('ucapan').value = '';
-    }
+// Fungsi untuk memuat data ucapan saat halaman dibuka
+function loadUcapan() {
+  const ucapanList = JSON.parse(localStorage.getItem('ucapanList')) || [];
+  const daftarUcapan = document.getElementById('daftarUcapan');
+  ucapanList.forEach(ucapan => {
+    const ucapanElement = document.createElement('p');
+    ucapanElement.textContent = ucapan;
+    daftarUcapan.appendChild(ucapanElement);
+  });
+}
 
-    // Fungsi untuk memuat ucapan saat halaman dibuka
-    function loadUcapan() {
-      const ucapanList = JSON.parse(localStorage.getItem('ucapanList')) || [];
-      const daftarUcapan = document.getElementById('daftarUcapan');
-      ucapanList.forEach(({ nama, ucapan }) => {
-        const ucapanElement = document.createElement('div');
-        ucapanElement.className = 'comment';
-        ucapanElement.innerHTML = `<span class="name">${nama}</span><span class="text">${ucapan}</span>`;
-        daftarUcapan.appendChild(ucapanElement);
-      });
-    }
-
-    // Panggil fungsi saat halaman dimuat
-    document.addEventListener('DOMContentLoaded', loadUcapan);
+// Panggil fungsi saat halaman dimuat
+document.addEventListener('DOMContentLoaded', loadUcapan);
   </script>
+  </section>
 
   <section id="gifts" class="gifts">
     <div class="container">
