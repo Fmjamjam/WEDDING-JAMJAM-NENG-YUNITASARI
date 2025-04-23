@@ -331,57 +331,35 @@
         <i class="fab fa-whatsapp"></i>
         &nbsp;&nbsp;Saya Datang
       </a>
-       <h3>Do'a dan Ucapan</h3>
+       <h3>UCAPAN DAN DO'A</h3>
+Baik, Jamjam! Aku akan bantu membuat form dengan input untuk nama dan ucapan, serta mendesain tampilannya agar menyerupai komentar di media sosial. Berikut adalah contoh kode HTML, CSS, dan JavaScript yang terintegrasi:
 
-  <!-- Form Input -->
-  <form id="ucapanForm">
-    <textarea id="ucapan" placeholder="Masukkan ucapan atau do'a"></textarea>
-    <button type="button" onclick="submitUcapan()">Kirim</button>
-  </form>
+HTML
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Do'a dan Ucapan</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Do'a dan Ucapan</h1>
 
-  <!-- Daftar Ucapan -->
-  <div id="daftarUcapan">
-    <!-- Ucapan akan muncul di sini -->
+    <!-- Form Input -->
+    <form id="ucapanForm">
+      <input type="text" id="nama" placeholder="Masukkan Nama" required>
+      <textarea id="ucapan" placeholder="Masukkan Ucapan atau Do'a" required></textarea>
+      <button type="button" onclick="submitUcapan()">Kirim</button>
+    </form>
+
+    <!-- Daftar Ucapan -->
+    <div id="daftarUcapan" class="comment-section">
+      <!-- Ucapan akan muncul di sini -->
+    </div>
   </div>
 
-  <!-- JavaScript -->
-  <script>
-    // Fungsi untuk menyimpan ucapan
-    function submitUcapan() {
-      const ucapan = document.getElementById('ucapan').value;
-
-      // Ambil data lama dari localStorage
-      let ucapanList = JSON.parse(localStorage.getItem('ucapanList')) || [];
-      ucapanList.push(ucapan);
-
-      // Simpan data ke localStorage
-      localStorage.setItem('ucapanList', JSON.stringify(ucapanList));
-
-      // Tampilkan ucapan di halaman
-      const daftarUcapan = document.getElementById('daftarUcapan');
-      const ucapanElement = document.createElement('p');
-      ucapanElement.textContent = ucapan;
-      daftarUcapan.appendChild(ucapanElement);
-
-      // Kosongkan textarea setelah dikirim
-      document.getElementById('ucapan').value = '';
-    }
-
-    // Fungsi untuk memuat data ucapan saat halaman dibuka
-    function loadUcapan() {
-      const ucapanList = JSON.parse(localStorage.getItem('ucapanList')) || [];
-      const daftarUcapan = document.getElementById('daftarUcapan');
-      ucapanList.forEach(ucapan => {
-        const ucapanElement = document.createElement('p');
-        ucapanElement.textContent = ucapan;
-        daftarUcapan.appendChild(ucapanElement);
-      });
-    }
-
-    // Panggil fungsi saat halaman dimuat
-    document.addEventListener('DOMContentLoaded', loadUcapan);
-  </script>
-    </section>
 
 
   <section id="gifts" class="gifts">
