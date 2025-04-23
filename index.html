@@ -370,40 +370,40 @@
     const database = firebase.database(app);
     // Fungsi untuk menyimpan ucapan
     function submitUcapan() {
-      const nama = document.getElementById('nama').value;
-      const ucapan = document.getElementById('ucapan').value;
+  const nama = document.getElementById('nama').value;
+  const ucapan = document.getElementById('ucapan').value;
 
-      if (!nama || !ucapan) {
-        alert('Harap isi nama dan ucapan!');
-        return;
-      }
+  if (!nama || !ucapan) {
+    alert('Harap isi nama dan ucapan!');
+    return;
+  }
 
-      // Kirim data ke Firebase
-      const newUcapanRef = firebase.database().ref('ucapan').push();
-      newUcapanRef.set({
-        nama: nama,
-        ucapan: ucapan
-      });
+  // Kirim data ke Firebase
+  const newUcapanRef = firebase.database().ref('ucapan').push();
+  newUcapanRef.set({
+    nama: nama,
+    ucapan: ucapan
+  });
 
-      // Kosongkan input setelah dikirim
-      document.getElementById('nama').value = '';
-      document.getElementById('ucapan').value = '';
-    }
+  // Kosongkan input setelah dikirim
+  document.getElementById('nama').value = '';
+  document.getElementById('ucapan').value = '';
+}
 
-    // Fungsi untuk memuat ucapan dari Firebase
-    function loadUcapan() {
-      const daftarUcapan = document.getElementById('daftarUcapan');
-      firebase.database().ref('ucapan').on('child_added', snapshot => {
-        const data = snapshot.val();
-        const ucapanElement = document.createElement('div');
-        ucapanElement.className = 'comment';
-        ucapanElement.innerHTML = `<span class="name">${data.nama}</span><span class="text">${data.ucapan}</span>`;
-        daftarUcapan.appendChild(ucapanElement);
-      });
-    }
+      function loadUcapan() {
+  const daftarUcapan = document.getElementById('daftarUcapan');
+  firebase.database().ref('ucapan').on('child_added', snapshot => {
+    const data = snapshot.val();
+    const ucapanElement = document.createElement('div');
+    ucapanElement.className = 'comment';
+    ucapanElement.innerHTML = `<span class="name">${data.nama}</span><span class="text">${data.ucapan}</span>`;
+    daftarUcapan.appendChild(ucapanElement);
+  });
+}
 
-    // Panggil fungsi saat halaman dimuat
-    document.addEventListener('DOMContentLoaded', loadUcapan);
+// Panggil fungsi saat halaman dimuat
+document.addEventListener('DOMContentLoaded', loadUcapan);
+
   </script>
   </section>
 
