@@ -522,24 +522,9 @@ footer li {
   cursor: pointer;
   transition: 0.3s;
 }
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f4;
-}
 
-.container {
-  width: 90%;
-  max-width: 600px;
-  margin: 20px auto;
-  background: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
 
-h1 {
+h3 {
   text-align: center;
   color: #333;
 }
