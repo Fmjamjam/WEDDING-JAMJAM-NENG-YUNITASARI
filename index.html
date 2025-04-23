@@ -332,29 +332,57 @@
         &nbsp;&nbsp;Saya Datang
       </a>
        <h3>Do'a dan Ucapan</h3>
-<div id="daftar-ucapan" class="text-white text-start mt-4"></div>
 
-<script src="https://cdn.jsdelivr.net/npm/tabletop@1.6.0/tabletop.min.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    Tabletop.init({
-      key: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT_5rAALb308QMlzUw91RtClMQ4XT8SJ1EHNVXi4cjk3Ix6PcFu2eZ9RJ21QMPDQc0d8BgLskyKWNrJ/pubhtml',
-      simpleSheet: true,
-      callback: function(data) {
-        const container = document.getElementById('daftar-ucapan');
-        data.forEach(item => {
-          const el = document.createElement('div');
-          el.innerHTML = `<p class="mb-2"><strong>${item.NAMA}:</strong> ${item.UCAPAN}</p>`;
-          container.appendChild(el);
-        });
-      }
-    });
-  });
-</script>
+  <!-- Form Input -->
+  <form id="ucapanForm">
+    <textarea id="ucapan" placeholder="Masukkan ucapan atau do'a"></textarea>
+    <button type="button" onclick="submitUcapan()">Kirim</button>
+  </form>
 
+  <!-- Daftar Ucapan -->
+  <div id="daftarUcapan">
+    <!-- Ucapan akan muncul di sini -->
+  </div>
 
-    
-  </section>
+  <!-- JavaScript -->
+  <script>
+    // Fungsi untuk menyimpan ucapan
+    function submitUcapan() {
+      const ucapan = document.getElementById('ucapan').value;
+
+      // Ambil data lama dari localStorage
+      let ucapanList = JSON.parse(localStorage.getItem('ucapanList')) || [];
+      ucapanList.push(ucapan);
+
+      // Simpan data ke localStorage
+      localStorage.setItem('ucapanList', JSON.stringify(ucapanList));
+
+      // Tampilkan ucapan di halaman
+      const daftarUcapan = document.getElementById('daftarUcapan');
+      const ucapanElement = document.createElement('p');
+      ucapanElement.textContent = ucapan;
+      daftarUcapan.appendChild(ucapanElement);
+
+      // Kosongkan textarea setelah dikirim
+      document.getElementById('ucapan').value = '';
+    }
+
+    // Fungsi untuk memuat data ucapan saat halaman dibuka
+    function loadUcapan() {
+      const ucapanList = JSON.parse(localStorage.getItem('ucapanList')) || [];
+      const daftarUcapan = document.getElementById('daftarUcapan');
+      ucapanList.forEach(ucapan => {
+        const ucapanElement = document.createElement('p');
+        ucapanElement.textContent = ucapan;
+        daftarUcapan.appendChild(ucapanElement);
+      });
+    }
+
+    // Panggil fungsi saat halaman dimuat
+    document.addEventListener('DOMContentLoaded', loadUcapan);
+  </script>
+    </section>
+
 
   <section id="gifts" class="gifts">
     <div class="container">
